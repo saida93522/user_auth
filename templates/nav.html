@@ -18,10 +18,15 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item px-2">
-          <a class="nav-link" role="button" href="#">Login</a>
+          <a class="nav-link" role="button" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item px-2">
-          <a class="nav-link btn btn-info" href="#" role="button">SignUp</a>
+          <a
+            class="nav-link btn btn-info"
+            href="{% url 'signup'%}"
+            role="button"
+            >SignUp</a
+          >
         </li>
       </ul>
     </div>
