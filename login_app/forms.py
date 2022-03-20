@@ -4,42 +4,78 @@ from django import forms
 User = get_user_model
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(
-        attrs={
-            "class":"form-control",
-            "placeholder":"my_username",
-            "id":"floatingInputUsername"}
-    ))
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            "class":"form-control",
-            "placeholder":"Password",
-            "id":"floatingPassword"}
-    ))
+    username = forms.CharField(
+        label="floatingInputUsername",
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"my_username",
+                "id":"floatingInputUsername"}))
+    
+    email = forms.EmailField(
+        label="floatingInputEmail",
+        widget=forms.EmailInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Password",
+                "id":"floatingInputEmail",
+            }))
+    
+    password = forms.CharField(
+        label="floatingPassword",
+        widget=forms.PasswordInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Password",
+                "id":"floatingPassword"}))
 
+    password2 = forms.CharField(
+        label="floatingPasswordConfirm",
+        widget=forms.PasswordInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Confirm Password",
+                "id":"floatingPasswordConfirm"            
+        }))
 
+    def clean_username(self):
+        invalid_username = ['abc',123]
+        username = self.cleaned_data['username']
+        qs = User.objects.filter(username__iexact=username)
+        
+        if username in invalid_username:
+            raise forms.ValidationError("This is an invalid username, please choose a different username.")        
+        if qs.exists():
+            raise forms.ValidationError("This is an invalid username, please choose a different username.")
+        return username
+        
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        qs = User.objects.filter(email__iexact=email)
+        if qs.exists():
+            raise forms.ValidationError("This email is already in use.")
+        return email
 
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(
-        attrs={
-            "class":"form-control",
-            "placeholder":"my_username",
-            "id":"floatingInputUsername"}   
-    ))
+    username = forms.CharField(
+        label="floatingInputUsername",
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"my_username",
+                "id":"floatingInputUsername"}))
 
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            "class":"form-control",
-            "placeholder":"Password",
-            "id":"floatingPassword"}
-    ))
-
-    def clean(self):
-        username = self.cleaned_data['username']
-        password = self.cleaned_data['password']
+    password = forms.CharField(
+        label="floatingPassword",
+        widget=forms.PasswordInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Password",
+                "id":"floatingPassword"}))
 
     def clean_username(self):
         username = self.cleaned_data['username']
-        qs = User.objects.filter(Username__iexact=username)
+        qs = User.objects.filter(username__iexact=username)
         if not qs.exists():
             raise forms.ValidationError('Invalid username, please enter valid username.')
+        return username
