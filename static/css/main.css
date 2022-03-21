@@ -11,12 +11,14 @@ body {
 /* ================== */
 /* Login */
 /* ================== */
-
+.placeholder {
+  color: #000;
+}
 .login {
   min-height: 80vh;
 }
-.login form label {
-  color: #000;
+form {
+  color: #fff;
 }
 
 .bg-image {

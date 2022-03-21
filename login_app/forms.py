@@ -1,28 +1,29 @@
 from django.contrib.auth import get_user_model
 from django import forms
 
-User = get_user_model
+User = get_user_model()
 
 class RegisterForm(forms.Form):
     username = forms.CharField(
-        label="floatingInputUsername",
+        label="Username",
         widget=forms.TextInput(
             attrs={
                 "class":"form-control",
                 "placeholder":"my_username",
-                "id":"floatingInputUsername"}))
+                "id":"floatingInputUsername",
+                }))
     
     email = forms.EmailField(
-        label="floatingInputEmail",
+        label="Email",
         widget=forms.EmailInput(
             attrs={
                 "class":"form-control",
-                "placeholder":"Password",
+                "placeholder":"Email",
                 "id":"floatingInputEmail",
             }))
     
     password = forms.CharField(
-        label="floatingPassword",
+        label="Password",
         widget=forms.PasswordInput(
             attrs={
                 "class":"form-control",
@@ -30,9 +31,10 @@ class RegisterForm(forms.Form):
                 "id":"floatingPassword"}))
 
     password2 = forms.CharField(
-        label="floatingPasswordConfirm",
+        label="Confirm Password",
         widget=forms.PasswordInput(
             attrs={
+                "type":"text",
                 "class":"form-control",
                 "placeholder":"Confirm Password",
                 "id":"floatingPasswordConfirm"            
@@ -58,15 +60,15 @@ class RegisterForm(forms.Form):
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        label="floatingInputUsername",
+        label="Username",
         widget=forms.TextInput(
             attrs={
                 "class":"form-control",
                 "placeholder":"my_username",
-                "id":"floatingInputUsername"}))
+                "id":"floatingInput"}))
 
     password = forms.CharField(
-        label="floatingPassword",
+        label="Password",
         widget=forms.PasswordInput(
             attrs={
                 "class":"form-control",

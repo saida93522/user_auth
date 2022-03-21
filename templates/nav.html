@@ -17,9 +17,15 @@
         <li class="nav-item px-2">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item px-2">
+          <a class="nav-link" role="button" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
         <li class="nav-item px-2">
           <a class="nav-link" role="button" href="{% url 'login' %}">Login</a>
         </li>
+
         <li class="nav-item px-2">
           <a
             class="nav-link btn btn-info"
@@ -28,6 +34,7 @@
             >SignUp</a
           >
         </li>
+        {% endif %}
       </ul>
     </div>
   </div>
