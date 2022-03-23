@@ -1,6 +1,6 @@
 body {
-  background: #c6c6c6;
-  color: #ffffff;
+  background: #372843;
+  color: #e98f54;
   min-width: 100%;
 }
 .btn-login {
@@ -15,16 +15,24 @@ body {
   color: #000;
 }
 .login {
-  min-height: 80vh;
+  min-height: 85vh;
+  background-color: green;
 }
 form {
   color: #fff;
 }
 
 .bg-image {
-  background-image: url("https://images.unsplash.com/photo-1580508244245-c446ca981a6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80");
+  /* width: 100%; */
+  background-image: url("/static/img/sof.jpg");
   background-size: cover;
   background-position: center;
+}
+
+@media (max-width: 575px) {
+  .bg-image {
+    min-height: auto;
+  }
 }
 
 .login-heading {
@@ -36,18 +44,30 @@ form {
 /* ================== */
 
 .card-img-left {
-  width: 45%;
-  background: scroll center
-    url("https://images.unsplash.com/photo-1612387427537-812886be9d8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80");
+  width: 100%;
+  min-height: 100%;
+  background-image: url("/static/img/tog.png");
   background-size: cover;
+  background-position: center;
 }
 
-.btn-google {
-  color: white !important;
-  background-color: #ea4335;
-}
-
+.btn-google,
 .btn-facebook {
+  color: #372843 !important;
+  background-color: #e98f54;
+}
+
+/* .btn-facebook {
   color: white !important;
   background-color: #3b5998;
-}
+} */
+/* #372843
+#6C6272
+#8A736B
+#744944
+#E98F54
+
+
+
+#362843
+#352743 */

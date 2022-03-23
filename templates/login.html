@@ -1,15 +1,15 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
-<div class="container bg-dark">
-  <div class="row my-5">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-    <div class="col-md-8 col-lg-6 mx-auto">
-      <div class="login d-flex align-items-center py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-9 col-lg-8 mx-auto">
+    <div class="container bg-dark">
+      <div class="card mb-3 my-5">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="{% static '/img/sof.jpg' %}" class="img-fluid" alt="..." />
+          </div>
+          <div class="col-md-6 d-flex align-items-center my-5">
+            <div class="card-body">
               <h3 class="login-heading mb-4">Welcome back!</h3>
-
-              <!-- Sign In Form -->
+              <p class="card-text">
+                 <!-- Sign In Form -->
               <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
                 <div class="form-floating mb-3 text-light">{{form.as_p}}</div>
@@ -28,11 +28,13 @@
                   </div>
                 </div>
               </form>
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 {% endblock content %}
