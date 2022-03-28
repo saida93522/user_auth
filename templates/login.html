@@ -1,22 +1,38 @@
 {% extends 'main.html' %} {% load static %} {% block content %}
-    <div class="container bg-dark">
-      <div class="card mb-3 my-5">
-        <div class="row g-0">
-          <div class="col-md-6">
-            <img src="{% static '/img/sof.jpg' %}" class="img-fluid" alt="..." />
-          </div>
-          <div class="col-md-6 d-flex align-items-center my-5">
-            <div class="card-body">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <!-- The image half -->
+    <div class="col-md-6 d-none d-md-flex login-image">
+      <div class="overlay w-50">
+        <p class="display-5">Join the largest Fantasy & Sci-Fi book club.</p>
+        <span class="credit"
+          >ART BY
+          <a
+            href="https://www.deviantart.com/jopainter/art/Rhys-620989360"
+            target="_blank"
+            >JoPainer</a
+          >
+        </span>
+      </div>
+    </div>
+
+    <!-- The content half -->
+    <div class="col-md-6 login-bg overlay-dark">
+      <div class="login overlay-content d-flex align-items-center py-5">
+        <!-- Demo content-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-7 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
-              <p class="card-text">
-                 <!-- Sign In Form -->
+              <p class="text-muted mb-4">Please sign in</p>
+              <!-- Sign In Form -->
               <form method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
-                <div class="form-floating mb-3 text-light">{{form.as_p}}</div>
+                <div class="form-fs form-floating mb-3">{{form.as_p}}</div>
 
-                <div class="d-grid">
+                <div class="form-fs d-grid">
                   <button
-                    class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"
+                    class="btn btn-lg btn-login fw-bold mb-2"
                     type="submit"
                   >
                     Sign in
@@ -26,15 +42,20 @@
                       >Forgot password?</a
                     >
                   </div>
+                  <div class="text-center mt-4">
+                    <a class="small" href="{% url 'signup' %}"
+                      >Don't have an account? Sign up</a
+                    >
+                  </div>
                 </div>
               </form>
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
-              </p>
             </div>
           </div>
         </div>
+        <!-- End -->
       </div>
     </div>
+    <!-- End -->
+  </div>
+</div>
 {% endblock content %}

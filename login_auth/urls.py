@@ -19,8 +19,13 @@ from django.conf import settings
 from  django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
+from allauth.socialaccount import views as allauth
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+  
+ 
     # link when user submits forgot password
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="reset_password.html"),name="password_reset"),
     

@@ -1,54 +1,77 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-xl-9 mx-auto">
-      <div
-        class="card bg-dark flex-row my-5 border-0 shadow rounded-3 overflow-hidden"
-      >
-        <div class="card-img-left d-none d-md-flex">
-          <!-- Background image for card set in CSS! -->
-        </div>
-        <div class="card-body p-4 p-sm-5 text-dark align-items-center">
-          <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
-          <form method="post" action="{% url 'signup' %}">
-            {% csrf_token %}
-            <div class="form-floating mb-3 text-light">{{form.as_p}}</div>
-            <hr />
+{% extends 'main.html' %} {% load static %} {% load socialaccount %}
+<!-- block -->
+{% block content %}
 
-            <div class="d-grid mb-2">
-              <button
-                class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
-                type="submit"
-              >
-                Register
-              </button>
-            </div>
-            <hr class="my-4" />
-            <a class="d-block text-center mt-2 small" href="{% url 'login' %}"
-              >Have an account? Sign In</a
-            >
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <!-- The image half -->
+    <div class="col-md-6 d-none d-md-flex signup-image">
+      <div class="overlay w-50">
+        <p class="display-5">Join the largest Fantasy & Sci-Fi book club.</p>
+        <span class="credit"
+          >ART BY
+          <a
+            href="https://www.deviantart.com/jopainter/art/Aelin-623835211"
+            target="_blank"
+            >JoPainer</a
+          >
+        </span>
+      </div>
+    </div>
 
-            <div class="d-grid mb-2">
-              <button
-                class="btn btn-lg btn-google btn-login fw-bold text-uppercase"
-                type="submit"
-              >
-                <i class="fab fa-google me-2"></i> Sign up with Google
-              </button>
-            </div>
+    <!-- The content half -->
+    <div class="col-md-6 login-bg overlay-dark">
+      <div class="login overlay-content d-flex align-items-center py-5">
+        <!-- Demo content-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-7 mx-auto">
+              <h3 class="login-heading mb-4">Join our community!</h3>
+              <p class="text-muted mb-4">Create an account</p>
+              <!-- Sign In Form -->
+              <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <div class="form-fs form-floating mb-3">{{form.as_p}}</div>
 
-            <div class="d-grid">
-              <button
-                class="btn btn-lg btn-facebook btn-login fw-bold text-uppercase"
-                type="submit"
-              >
-                <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
-              </button>
+                <div class="form-fs d-grid mb-2">
+                  <button
+                    class="btn btn-lg btn-login text-uppercase fw-bold mb-2"
+                    type="submit"
+                  >
+                    Sign in
+                  </button>
+                  <p class="d-block text-center mt-3 small">
+                    Already have an account?
+                    <a
+                      class="text-decoration-underline small"
+                      href="{% url 'login' %}"
+                      >Sign In</a
+                    >
+                  </p>
+
+                  <div class="d-grid">
+                    <p class="d-block text-center mt-3">
+                      Or Signup with
+                      <a
+                        class="text-decoration-underline"
+                        href="{% provider_login_url 'google' process="login"  %}"
+                        ><i class="bx bxl-google bx-border-circle"></i
+                      ></a>
+                      <a class="text-decoration-underline" href="#"
+                        ><i class="bx bxl-twitter bx-border-circle"></i
+                      ></a>
+                    </p>
+                  </div>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+    <!-- End -->
   </div>
 </div>
+
+{% providers_media_js %}
 {% endblock content %}

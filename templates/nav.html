@@ -1,39 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+{% load static %}{% load socialaccount %}
+
+<nav class="navbar navbar-expand-lg pb-5fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">LR</a>
+    <a href="#" class="navbar-brand font-weight-bold"
+      ><i class="bx bxs-magic-wand bx-flip-vertical"></i
+    ></a>
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <i class="bx bx-menu-alt-right"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item px-2">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if request.user.is_authenticated %}
+        <li class="nav-item px-2">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'homepage' %}"
+            >Home</a
+          >
+        </li>
+
         <li class="nav-item px-2">
           <a class="nav-link" role="button" href="{% url 'logout' %}">Logout</a>
         </li>
         <li class="nav-item px-2">
           <a class="nav-link" role="button" href="#">Hi {{user.username}} 👋</a>
         </li>
+
         {% else %}
         <li class="nav-item px-2">
           <a class="nav-link" role="button" href="{% url 'login' %}">Login</a>
         </li>
 
-        <li class="nav-item px-2">
-          <a
-            class="nav-link btn btn-info"
-            href="{% url 'signup'%}"
-            role="button"
+        <li class="nav-item">
+          <a class="btn btn-link" href="{% url 'signup'%}" role="button"
             >SignUp</a
           >
         </li>
